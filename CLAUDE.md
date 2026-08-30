@@ -26,6 +26,8 @@ Le site est multi-pages : l'accueil (`index.html` + `src/App.tsx`) liste des lie
 
 Idées existantes : `grob/` (éditeur de sprites GROB), `dico/` (dictionnaire des commandes HP48G, données dans `src/dico/commandes.ts`).
 
+Dico : chaque commande peut porter un champ `page` (page dans le PDF de l'AUG). Le PDF n'est pas encore dans le repo — le réseau du conteneur bloque tout sauf GitHub/npm, le propriétaire doit le committer lui-même dans `public/aug.pdf`. Quand il y sera : extraire la page de chaque commande (référence alphabétique du manuel) et remplir les champs `page` pour activer les liens profonds `aug.pdf#page=N`.
+
 ## Conventions
 
 - Interface en français.

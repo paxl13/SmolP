@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { COMMANDES, SUJETS, type Commande } from './commandes'
+import { AUG_DRIVE, COMMANDES, SUJETS, type Commande } from './commandes'
 
 type Vue = 'alpha' | 'sujets'
 
@@ -20,9 +20,28 @@ function Fiche({ commande }: { commande: Commande }) {
     <article className="fiche">
       <div className="fiche-titre">
         <code className="nom">{commande.nom}</code>
-        {commande.pile && <code className="pile">{commande.pile}</code>}
+        {commande.page && (
+          <a
+            className="lien-aug"
+            href={`${import.meta.env.BASE_URL}aug.pdf#page=${commande.page}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            AUG p.{commande.page} ↗
+          </a>
+        )}
       </div>
+      {commande.piles && (
+        <ul className="piles">
+          {commande.piles.map((forme) => (
+            <li key={forme}>
+              <code>{forme}</code>
+            </li>
+          ))}
+        </ul>
+      )}
       <p>{commande.description}</p>
+      {commande.details && <p className="details">{commande.details}</p>}
     </article>
   )
 }
@@ -35,7 +54,10 @@ function DicoApp() {
     const req = normaliser(recherche.trim())
     if (!req) return COMMANDES
     return COMMANDES.filter(
-      (c) => normaliser(c.nom).includes(req) || normaliser(c.description).includes(req),
+      (c) =>
+        normaliser(c.nom).includes(req) ||
+        normaliser(c.description).includes(req) ||
+        (c.details && normaliser(c.details).includes(req)),
     )
   }, [recherche])
 
@@ -63,7 +85,10 @@ function DicoApp() {
         <a href={import.meta.env.BASE_URL}>← SmolP</a>
         <h1>Dico HP48G</h1>
         <p className="tagline">
-          {COMMANDES.length} commandes — par sujet ou en ordre alphabétique.
+          {COMMANDES.length} commandes — signatures de pile, détails, recherche.{' '}
+          <a href={AUG_DRIVE} target="_blank" rel="noreferrer">
+            AUG (PDF) ↗
+          </a>
         </p>
       </header>
 

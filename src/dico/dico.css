@@ -115,16 +115,43 @@
   padding: 0;
 }
 
-.fiche .pile {
+.fiche .lien-aug {
+  margin-left: auto;
   font-size: 0.8rem;
-  color: var(--muted);
-  background: none;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.piles {
+  list-style: none;
+  margin: 0.35rem 0 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.piles code {
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  padding: 0.1em 0.45em;
+  border-radius: 6px;
+  word-break: break-word;
 }
 
 .fiche p {
-  margin: 0.25rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 0.9rem;
+}
+
+.fiche .details {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.dico .tagline a {
+  color: var(--accent);
 }
 
 .vide {
