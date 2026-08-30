@@ -33,3 +33,4 @@ Idées existantes : `grob/` (éditeur de sprites GROB), `dico/` (dictionnaire de
 - Garder le projet « smol » : pas de nouvelle dépendance lourde sans raison claire.
 - `base: '/SmolP/'` dans `vite.config.ts` est requis pour GitHub Pages — ne pas le retirer.
 - Avant de pusher : `npm run build` et `npm run lint` doivent passer.
+- **Toujours déployer** : terminer chaque session en pushant sur `main` pour que le propriétaire puisse tester le résultat sur https://paxl13.github.io/SmolP/ depuis son téléphone. Du travail non pushé est du travail invisible.
