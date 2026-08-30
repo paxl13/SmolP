@@ -74,10 +74,40 @@
   color: var(--accent-fg);
 }
 
+.index-groupes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.index-groupes a {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--carte-bg);
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.index-groupes a:active {
+  transform: scale(0.96);
+}
+
+.index-groupes .compte {
+  font-size: 0.75rem;
+}
+
 .groupe {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  scroll-margin-top: 4.2rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .groupe h2 {

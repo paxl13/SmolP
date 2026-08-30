@@ -15,6 +15,10 @@ function lettreDe(nom: string): string {
   return /[A-Z]/.test(premiere) ? premiere : '#'
 }
 
+function idDe(titre: string): string {
+  return `s-${normaliser(titre).replace(/[^a-z0-9]+/g, '-')}`
+}
+
 function Fiche({ commande }: { commande: Commande }) {
   return (
     <article className="fiche">
@@ -126,10 +130,20 @@ function DicoApp() {
         </div>
       </div>
 
+      {groupes.length > 1 && (
+        <nav className="index-groupes" aria-label="Index des sections">
+          {groupes.map((groupe) => (
+            <a key={groupe.titre} href={`#${idDe(groupe.titre)}`}>
+              {groupe.titre} <span className="compte">{groupe.commandes.length}</span>
+            </a>
+          ))}
+        </nav>
+      )}
+
       {groupes.length === 0 && <p className="vide">Rien trouvé pour « {recherche} ».</p>}
 
       {groupes.map((groupe) => (
-        <section key={groupe.titre} className="groupe">
+        <section key={groupe.titre} className="groupe" id={idDe(groupe.titre)}>
           <h2>
             {groupe.titre} <span className="compte">{groupe.commandes.length}</span>
           </h2>
