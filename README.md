@@ -20,6 +20,15 @@ npm run lint     # lint
 npm run preview  # prévisualiser le build de production
 ```
 
+## Activer le déploiement GitHub Pages (une seule fois)
+
+Le token de l'intégration Claude ne peut pas créer de fichiers de workflow, donc deux petites étapes manuelles :
+
+1. Copier `docs/deploy.yml` vers `.github/workflows/deploy.yml` (par exemple via l'interface GitHub : **Add file → Create new file**, chemin `.github/workflows/deploy.yml`, coller le contenu).
+2. Dans **Settings → Pages**, mettre **Source** sur **GitHub Actions**.
+
+Ensuite chaque push sur `main` publie automatiquement sur https://paxl13.github.io/SmolP/.
+
 ## Workflow depuis le téléphone
 
 1. Ouvrir une session Claude Code sur ce repo (app mobile ou claude.ai/code).

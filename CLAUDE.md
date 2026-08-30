@@ -6,7 +6,7 @@ Bac à sable web pour prototyper des idées rapidement. Le propriétaire travail
 
 - Vite + React 19 + TypeScript (strict)
 - oxlint pour le lint
-- Déploiement auto sur GitHub Pages (https://paxl13.github.io/SmolP/) à chaque push sur `main` via `.github/workflows/deploy.yml`
+- Déploiement auto sur GitHub Pages (https://paxl13.github.io/SmolP/) à chaque push sur `main` via `.github/workflows/deploy.yml` (le modèle vit dans `docs/deploy.yml` tant que le propriétaire ne l'a pas installé — le token Claude ne peut pas pusher de workflows)
 
 ## Commandes
 
