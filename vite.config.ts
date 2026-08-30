@@ -17,6 +17,7 @@ export default defineConfig({
       input: {
         index: resolve(racine, 'index.html'),
         grob: resolve(racine, 'grob/index.html'),
+        dico: resolve(racine, 'dico/index.html'),
       },
     },
   },

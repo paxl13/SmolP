@@ -15,6 +15,17 @@ Bac à sable web pour prototyper des idées rapidement. Le propriétaire travail
 - `npm run lint` — oxlint
 - `npm run dev` — serveur de dev (HMR)
 
+## Structure — une page par idée
+
+Le site est multi-pages : l'accueil (`index.html` + `src/App.tsx`) liste des liens vers les idées. Pour ajouter une idée `<idee>` :
+
+1. Créer `<idee>/index.html` (copier celui d'une idée existante, adapter titre et chemin du script).
+2. Créer `src/<idee>/main.tsx` + composants ; importer `../index.css` (tokens partagés) puis le CSS propre à la page.
+3. Ajouter l'entrée dans `build.rollupOptions.input` de `vite.config.ts`.
+4. Ajouter le lien dans la liste `idees` de `src/App.tsx`.
+
+Idées existantes : `grob/` (éditeur de sprites GROB), `dico/` (dictionnaire des commandes HP48G, données dans `src/dico/commandes.ts`).
+
 ## Conventions
 
 - Interface en français.

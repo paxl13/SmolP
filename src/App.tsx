@@ -4,6 +4,11 @@ const idees = [
     titre: 'Éditeur de sprites GROB',
     description: 'Pixel art pour la HP48G, export en string GROB.',
   },
+  {
+    path: 'dico/',
+    titre: 'Dico HP48G',
+    description: 'Les commandes de la 48G, par sujet et en alpha, avec recherche.',
+  },
 ]
 
 function App() {

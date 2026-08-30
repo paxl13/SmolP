@@ -1,0 +1,134 @@
+.dico {
+  min-height: 100dvh;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+}
+
+.dico header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dico header a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.dico h1 {
+  font-size: 1.8rem;
+}
+
+.dico .tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.barre {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  background: var(--bg);
+}
+
+.barre input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--carte-bg);
+  color: var(--fg);
+}
+
+.bascule {
+  display: flex;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bascule button {
+  padding: 0.55rem 0.8rem;
+  font-size: 0.9rem;
+  border: none;
+  background: var(--carte-bg);
+  color: var(--muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.bascule button.actif {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.groupe h2 {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.compte {
+  color: var(--muted);
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+
+.fiche {
+  padding: 0.7rem 0.9rem;
+  background: var(--carte-bg);
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+}
+
+.fiche-titre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.fiche .nom {
+  font-weight: 700;
+  font-size: 1rem;
+  background: none;
+  padding: 0;
+}
+
+.fiche .pile {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: none;
+  padding: 0;
+}
+
+.fiche p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+}
+
+.vide {
+  color: var(--muted);
+  text-align: center;
+  padding: 2rem 0;
+}
