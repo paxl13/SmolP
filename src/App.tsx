@@ -1,20 +1,24 @@
-import { useState } from 'react'
+const idees = [
+  {
+    path: 'grob/',
+    titre: 'Éditeur de sprites GROB',
+    description: 'Pixel art pour la HP48G, export en string GROB.',
+  },
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <main className="app">
+    <main className="accueil">
       <h1>SmolP</h1>
-      <p className="tagline">Mon bac à sable pour tester des idées.</p>
-
-      <button type="button" className="counter" onClick={() => setCount((c) => c + 1)}>
-        Ça marche · {count}
-      </button>
-
-      <p className="hint">
-        Modifie <code>src/App.tsx</code> pour commencer une nouvelle idée.
-      </p>
+      <p className="tagline">Mes idées, une page à la fois.</p>
+      <nav className="idees">
+        {idees.map((idee) => (
+          <a key={idee.path} className="carte" href={import.meta.env.BASE_URL + idee.path}>
+            <strong>{idee.titre}</strong>
+            <span>{idee.description}</span>
+          </a>
+        ))}
+      </nav>
     </main>
   )
 }

@@ -1,0 +1,123 @@
+.grob {
+  min-height: 100dvh;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+}
+
+.grob header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.grob header a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.grob h1 {
+  font-size: 1.8rem;
+}
+
+.grob .tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.controles label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.controles input {
+  width: 4.5rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  background: var(--carte-bg);
+  color: var(--fg);
+}
+
+.grob button {
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.grob button:active {
+  transform: scale(0.97);
+}
+
+.cadre {
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  padding: 0.5rem;
+  background: var(--carte-bg);
+  overflow-x: auto;
+}
+
+.cadre canvas {
+  display: block;
+  margin: 0 auto;
+  touch-action: none;
+  border-radius: 4px;
+}
+
+.sortie {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sortie-entete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sortie h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sortie textarea {
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  background: var(--carte-bg);
+  color: var(--fg);
+  resize: vertical;
+  word-break: break-all;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
