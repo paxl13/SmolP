@@ -150,6 +150,19 @@
   color: var(--muted);
 }
 
+.fiche .exemple {
+  margin: 0.4rem 0 0;
+  padding: 0.5rem 0.7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .dico .tagline a {
   color: var(--accent);
 }

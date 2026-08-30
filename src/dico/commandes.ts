@@ -8,6 +8,7 @@ export type Commande = {
   piles?: string[]
   description: string
   details?: string
+  exemple?: string
   page?: number
 }
 
@@ -148,14 +149,27 @@ export const COMMANDES: Commande[] = [
   { nom: 'FC?C', sujet: 'Tests & logique', piles: ['n → 0/1'], description: 'Teste si le drapeau est baissé, puis le baisse.' },
 
   // ── Programmation ────────────────────────────────────────────────────
-  { nom: 'IF…THEN…END', sujet: 'Programmation', piles: ['IF test THEN actions END'], description: 'Conditionnelle : exécute les actions si le test est vrai (≠0).', details: 'Le test peut aussi être posé sur la pile avant le IF.' },
-  { nom: 'IF…THEN…ELSE…END', sujet: 'Programmation', piles: ['IF test THEN si-vrai ELSE si-faux END'], description: 'Conditionnelle complète avec branche sinon.' },
-  { nom: 'CASE…END', sujet: 'Programmation', piles: ['CASE t₁ THEN a₁ END t₂ THEN a₂ END … défaut END'], description: 'Choix multiple : exécute la première branche dont le test est vrai.' },
-  { nom: 'FOR…NEXT', sujet: 'Programmation', piles: ['début fin FOR i actions NEXT'], description: 'Boucle avec compteur : i est une variable locale visible dans le corps.', details: 'Le compteur va de début à fin inclus, pas de 1.' },
-  { nom: 'FOR…STEP', sujet: 'Programmation', piles: ['début fin FOR i actions pas STEP'], description: 'Comme FOR…NEXT mais le pas est fourni avant STEP (peut être négatif ou fractionnaire).' },
-  { nom: 'START…NEXT', sujet: 'Programmation', piles: ['début fin START actions NEXT'], description: 'Boucle simple sans variable de compteur.' },
-  { nom: 'WHILE…REPEAT…END', sujet: 'Programmation', piles: ['WHILE test REPEAT actions END'], description: 'Boucle tant que : teste avant chaque itération.' },
-  { nom: 'DO…UNTIL…END', sujet: 'Programmation', piles: ['DO actions UNTIL test END'], description: 'Boucle jusqu’à : exécute au moins une fois, s’arrête quand le test devient vrai.' },
+  { nom: 'IF…THEN…END', sujet: 'Programmation', piles: ['IF test THEN actions END'], description: 'Conditionnelle : exécute les actions si le test est vrai (≠0).', details: 'Le test peut aussi être posé sur la pile avant le IF.', exemple: '« IF X 0 < THEN "négatif" MSGBOX END »' },
+  { nom: 'IF…THEN…ELSE…END', sujet: 'Programmation', piles: ['IF test THEN si-vrai ELSE si-faux END'], description: 'Conditionnelle complète avec branche sinon.', exemple: '« IF X 2 MOD THEN "impair" ELSE "pair" END MSGBOX »' },
+  { nom: 'IF', sujet: 'Programmation', description: 'Ouvre une conditionnelle. Tout ce qui est entre IF et THEN constitue le test.', details: 'Voir IF…THEN…END et IF…THEN…ELSE…END.' },
+  { nom: 'THEN', sujet: 'Programmation', description: 'Sépare le test des actions dans IF et CASE ; consomme le résultat du test (vrai = ≠0).', details: 'Utilisé dans IF…THEN…END, CASE…END et IFERR…THEN…END.' },
+  { nom: 'ELSE', sujet: 'Programmation', description: 'Introduit la branche exécutée quand le test est faux.', details: 'Valide dans IF…THEN…ELSE…END et IFERR…THEN…ELSE…END.' },
+  { nom: 'END', sujet: 'Programmation', description: 'Termine une structure : IF, CASE (chaque branche et le bloc), WHILE…REPEAT, DO…UNTIL, IFERR.', details: 'Chaque structure ouverte doit avoir son END — l’éditeur les insère par paires.' },
+  { nom: 'CASE…END', sujet: 'Programmation', piles: ['CASE t₁ THEN a₁ END t₂ THEN a₂ END … défaut END'], description: 'Choix multiple : exécute la première branche dont le test est vrai, puis saute à la fin.', details: 'Les actions par défaut (optionnelles) se placent juste avant le dernier END.', exemple: '« CASE X 0 < THEN "nég" END X 0 == THEN "nul" END "pos" END »' },
+  { nom: 'CASE', sujet: 'Programmation', description: 'Ouvre un choix multiple ; chaque branche est test THEN actions END.', details: 'Voir CASE…END.' },
+  { nom: 'FOR…NEXT', sujet: 'Programmation', piles: ['début fin FOR i actions NEXT'], description: 'Boucle avec compteur : i est une variable locale visible dans le corps.', details: 'Le compteur va de début à fin inclus, pas de 1. Le corps s’exécute au moins une fois.', exemple: '« 1 5 FOR i i SQ NEXT »  → 1 4 9 16 25' },
+  { nom: 'FOR…STEP', sujet: 'Programmation', piles: ['début fin FOR i actions pas STEP'], description: 'Comme FOR…NEXT mais le pas est fourni avant STEP (négatif ou fractionnaire permis).', exemple: '« 10 2 FOR i i -2 STEP »  → 10 8 6 4 2' },
+  { nom: 'FOR', sujet: 'Programmation', piles: ['début fin FOR nom'], description: 'Ouvre une boucle à compteur : consomme les bornes et crée la variable locale nommée.', details: 'Se termine par NEXT (pas de 1) ou pas STEP.' },
+  { nom: 'NEXT', sujet: 'Programmation', description: 'Ferme une boucle FOR ou START : incrémente de 1 et reboucle tant que le compteur ≤ fin.', },
+  { nom: 'STEP', sujet: 'Programmation', piles: ['pas STEP'], description: 'Ferme une boucle FOR ou START avec un pas explicite pris sur la pile.', details: 'Pas négatif : la boucle descend et s’arrête quand le compteur < fin.' },
+  { nom: 'START…NEXT', sujet: 'Programmation', piles: ['début fin START actions NEXT'], description: 'Boucle simple sans variable de compteur.', exemple: '« 1 4 START "ha" NEXT »  → "ha" "ha" "ha" "ha"' },
+  { nom: 'START', sujet: 'Programmation', piles: ['début fin START'], description: 'Ouvre une boucle comptée sans variable ; se ferme par NEXT ou STEP.' },
+  { nom: 'WHILE…REPEAT…END', sujet: 'Programmation', piles: ['WHILE test REPEAT actions END'], description: 'Boucle tant que : le test est évalué avant chaque itération ; zéro passage possible.', exemple: '« WHILE X 100 < REPEAT X 2 * \'X\' STO END »' },
+  { nom: 'WHILE', sujet: 'Programmation', description: 'Ouvre une boucle « tant que » ; le test se place entre WHILE et REPEAT.' },
+  { nom: 'REPEAT', sujet: 'Programmation', description: 'Consomme le test d’un WHILE : si vrai exécute le corps puis reboucle, si faux sort au END.' },
+  { nom: 'DO…UNTIL…END', sujet: 'Programmation', piles: ['DO actions UNTIL test END'], description: 'Boucle jusqu’à : exécute le corps au moins une fois, s’arrête quand le test devient vrai.', exemple: '« DO RAND UNTIL DUP .9 > END »' },
+  { nom: 'DO', sujet: 'Programmation', description: 'Ouvre une boucle « jusqu’à » ; le corps va de DO à UNTIL.' },
+  { nom: 'UNTIL', sujet: 'Programmation', description: 'Sépare le corps du test dans DO…UNTIL…END ; le test va de UNTIL à END.', details: 'La boucle s’arrête quand le test est vrai (≠0).' },
   { nom: '→', sujet: 'Programmation', piles: ['obj… → (lie aux noms locaux)', '→ a b « corps »', '→ a b \'expr\''], description: 'Variables locales : prend les objets de la pile et les lie aux noms, visibles dans le programme ou l’expression qui suit.' },
   { nom: 'EVAL', sujet: 'Programmation', piles: ['obj →  (résultat selon l’objet)'], description: 'Évalue l’objet : exécute un programme, rappelle un nom, calcule une expression, éclate une liste.' },
   { nom: 'HALT', sujet: 'Programmation', description: 'Suspend le programme et rend la main à l’utilisateur.', details: 'Reprise avec CONT ; l’annonciateur HLT s’affiche.' },

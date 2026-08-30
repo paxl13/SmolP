@@ -42,6 +42,7 @@ function Fiche({ commande }: { commande: Commande }) {
       )}
       <p>{commande.description}</p>
       {commande.details && <p className="details">{commande.details}</p>}
+      {commande.exemple && <pre className="exemple">{commande.exemple}</pre>}
     </article>
   )
 }
