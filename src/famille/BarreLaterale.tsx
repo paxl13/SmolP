@@ -1,6 +1,6 @@
 import type { JSX } from 'react'
 import type { Vue } from './FamilleApp'
-import { IconeCalendrier, IconeEngrenage, IconeMaison, IconeTelephone } from './Icones'
+import { IconeCalendrier, IconeEngrenage, IconeMaison, IconeTele, IconeTelephone } from './Icones'
 
 interface Props {
   vue: Vue
@@ -11,6 +11,7 @@ const ENTREES: Array<{ vue: Vue; libelle: string; Icone: () => JSX.Element }> = 
   { vue: 'accueil', libelle: 'Accueil', Icone: IconeMaison },
   { vue: 'calendrier', libelle: 'Calendrier', Icone: IconeCalendrier },
   { vue: 'config', libelle: 'Réglages', Icone: IconeEngrenage },
+  { vue: 'mur', libelle: 'Mode mur (affichage salle à dîner)', Icone: IconeTele },
 ]
 
 function BarreLaterale({ vue, changerVue }: Props) {

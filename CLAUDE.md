@@ -24,7 +24,7 @@ Le site est multi-pages : l'accueil (`index.html` + `src/App.tsx`) liste des lie
 3. Ajouter l'entrée dans `build.rollupOptions.input` de `vite.config.ts`.
 4. Ajouter le lien dans la liste `idees` de `src/App.tsx`.
 
-Idées existantes : `grob/` (éditeur de sprites GROB), `dico/` (dictionnaire des commandes HP48G, données dans `src/dico/commandes.ts`).
+Idées existantes : `grob/` (éditeur de sprites GROB), `dico/` (dictionnaire des commandes HP48G, données dans `src/dico/commandes.ts`), `famille/` (organisateur familial, maquette : dashboard `#accueil`, mode kiosque `#mur` pour l'écran mural de la salle à dîner, portail mobile `#mobile`).
 
 Dico : chaque commande peut porter un champ `page` (page dans le PDF de l'AUG). Le PDF n'est pas encore dans le repo — le réseau du conteneur bloque tout sauf GitHub/npm, le propriétaire doit le committer lui-même dans `public/aug.pdf`. Quand il y sera : extraire la page de chaque commande (référence alphabétique du manuel) et remplir les champs `page` pour activer les liens profonds `aug.pdf#page=N`.
 

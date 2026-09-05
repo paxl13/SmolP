@@ -47,6 +47,31 @@ export function IconeTelephone() {
   )
 }
 
+export function IconeTele() {
+  return (
+    <svg {...base}>
+      <rect x="3" y="4.5" width="18" height="13" rx="2" />
+      <path d="M8.5 21h7" />
+    </svg>
+  )
+}
+
+export function IconePleinEcran() {
+  return (
+    <svg {...base} width={24} height={24}>
+      <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+    </svg>
+  )
+}
+
+export function IconeQuitter() {
+  return (
+    <svg {...base} width={24} height={24}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  )
+}
+
 export function IconeCrochet() {
   return (
     <svg {...base} strokeWidth={3}>

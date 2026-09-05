@@ -3,12 +3,13 @@ import BarreLaterale from './BarreLaterale'
 import CalendrierPlein from './CalendrierPlein'
 import Configuration from './Configuration'
 import Dashboard from './Dashboard'
+import ModeMur from './ModeMur'
 import PortailMobile from './PortailMobile'
 import { CALENDRIERS, type CalendrierId, type MembreId } from './donnees'
 
-export type Vue = 'accueil' | 'calendrier' | 'config' | 'mobile'
+export type Vue = 'accueil' | 'calendrier' | 'config' | 'mobile' | 'mur'
 
-const VUES: Vue[] = ['accueil', 'calendrier', 'config', 'mobile']
+const VUES: Vue[] = ['accueil', 'calendrier', 'config', 'mobile', 'mur']
 
 function vueDepuisHash(): Vue {
   const h = window.location.hash.replace('#', '') as Vue
@@ -61,9 +62,12 @@ function FamilleApp() {
 
   return (
     <div className={`famille vue-${vue}`}>
-      <BarreLaterale vue={vue} changerVue={changerVue} />
+      {vue !== 'mur' && <BarreLaterale vue={vue} changerVue={changerVue} />}
       <main className="scene">
         {vue === 'accueil' && <Dashboard coches={cochesApi} calendriersActifs={calendriersActifs} />}
+        {vue === 'mur' && (
+          <ModeMur coches={cochesApi} calendriersActifs={calendriersActifs} quitter={() => changerVue('accueil')} />
+        )}
         {vue === 'calendrier' && (
           <CalendrierPlein calendriersActifs={calendriersActifs} basculerCalendrier={basculerCalendrier} />
         )}

@@ -59,6 +59,15 @@ function Configuration() {
         <ul className="liste">
           <li>
             <div>
+              <strong>Mode mur</strong>
+              <span>Horloge, écran toujours allumé, rechargement chaque nuit à 3 h</span>
+            </div>
+            <a className="etat" href="#mur">
+              Lancer
+            </a>
+          </li>
+          <li>
+            <div>
               <strong>Veille</strong>
               <span>Écran éteint de 22 h à 6 h</span>
             </div>
