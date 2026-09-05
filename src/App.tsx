@@ -9,6 +9,11 @@ const idees = [
     titre: 'Dico HP48G',
     description: 'Les commandes de la 48G, par sujet et en alpha, avec recherche.',
   },
+  {
+    path: 'famille/',
+    titre: 'Organisateur famille',
+    description: 'Maquette du tableau de bord pour l’écran de la salle à dîner, et du portail mobile.',
+  },
 ]
 
 function App() {
